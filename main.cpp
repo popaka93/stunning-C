@@ -2,7 +2,7 @@
 #include <string>
 #include "Cart.h"
 #include "StockNode.h"
-#include "StockDb.h"
+
 using namespace std;
 
 int main() {
@@ -12,6 +12,7 @@ int main() {
     stk.load("StockDb.txt");
 
     cout<<stk;
+    cout << endl;
 
     int qty;
     double subTotal{};
@@ -28,79 +29,85 @@ int main() {
     while (true) {
         int choice;
         cout << " What would you like to Purchase " << endl;
-        cout << " 1. Oranges $1 each " << endl;
-        cout << " 2. Bananas $0.40 each " << endl;
-        cout << " 3. Tomatos $3 each " << endl;
-        cout << " 4. Grapes $2.50 each " << endl;
-        cout << " 5. Pears $1.50 each " << endl;
-        cout << " 6. Lemons $0.50 each " << endl;
-        cout << " 7. Modify Cart" << endl;
-        cout << " 8. Check Stock" << endl;
-        cout << " 9. Check out " << endl;
+        cout << " 1. Orange $1.5 each " << endl;
+        cout << " 2. Tomato $0.5 each " << endl;
+        cout << " 3. Banana $2.5 each " << endl;
+        cout << " 4. Pear $0.75 each " << endl;
+        cout << " 5. Grapes $1.75 each " << endl;
+        cout << " 6. Lemon $0.5 each " << endl;
+        cout << " 7. WaterMelon $3.5 each " << endl;
+        cout << " 8. Strawberry $2.3 each " << endl;
+        cout << " 9. Modify Cart" << endl;
+        cout << " 10. Check Stock" << endl;
+        cout << " 11. Check out " << endl;
         cin >> choice;
         int i = 0;
         switch (choice) {
             case 1: {
                 cout << " How many would you like to buy? " << endl;
                 cin >> qty;
-                stk.getNth(0);
-                subTotal += temp.getPrice() * qty;
+                goods.insert(stk.getSerial(111111), stk.getItemName(111111), stk.getPrice(111111), qty, i);
+                subTotal += stk.getPrice(111111) * qty;
                 i++;
                 break;
             }
             case 2: {
                 cout << "How many would you like to buy? " << endl;
                 cin >> qty;
-                if(temp.getSerial()==2222) {
+                    goods.insert(stk.getSerial(222222), stk.getItemName(222222), stk.getPrice(222222), qty, i);
                     subTotal += temp.getPrice() * qty;
-                    goods.insert(temp.getSerial(), temp.getItemName(), temp.getPrice(), qty, i);
-
-                }
                 i++;
                 break;
             }
             case 3: {
-                cout << " How many would you like to buy? " << endl;
+                cout << "How many would you like to buy? " << endl;
                 cin >> qty;
-                if(temp.getSerial()==3333) {
-                    subTotal += temp.getPrice() * qty;
-                    goods.insert(temp.getSerial(), temp.getItemName(), temp.getPrice(), qty, i);
-
-                }
+                goods.insert(stk.getSerial(333333), stk.getItemName(333333), stk.getPrice(333333), qty, i);
+                subTotal += temp.getPrice() * qty;
                 i++;
                 break;
             }
             case 4: {
-                cout << " How many would you like to buy? " << endl;
+                cout << "How many would you like to buy? " << endl;
                 cin >> qty;
-                if(temp.getSerial()==4444) {
-                    subTotal += temp.getPrice() * qty;
-                    goods.insert(temp.getSerial(), temp.getItemName(), temp.getPrice(), qty, i);
-                }
+                goods.insert(stk.getSerial(444444), stk.getItemName(444444), stk.getPrice(444444), qty, i);
+                subTotal += temp.getPrice() * qty;
                 i++;
                 break;
             }
             case 5: {
-                cout << " How many would you like to buy? " << endl;
+                cout << "How many would you like to buy? " << endl;
                 cin >> qty;
-                if(temp.getSerial()==5555) {
-                    subTotal += temp.getPrice() * qty;
-                    goods.insert(temp.getSerial(), temp.getItemName(), temp.getPrice(), qty, i);
-                }
+                goods.insert(stk.getSerial(555555), stk.getItemName(555555), stk.getPrice(555555), qty, i);
+                subTotal += stk.getPrice(555555) * qty;
                 i++;
                 break;
             }
             case 6: {
-                cout << " How many would you like to buy? " << endl;
+                cout << "How many would you like to buy? " << endl;
                 cin >> qty;
-                if(temp.getSerial()==6666) {
-                    subTotal += temp.getPrice() * qty;
-                    goods.insert(temp.getSerial(), temp.getItemName(), temp.getPrice(), qty, i);
-                }
+                goods.insert(stk.getSerial(666666), stk.getItemName(666666), stk.getPrice(666666), qty, i);
+                subTotal += stk.getPrice(666666) * qty;
                 i++;
                 break;
             }
             case 7: {
+                cout << " How many would you like to buy? " << endl;
+                cin >> qty;
+                goods.insert(stk.getSerial(777777), stk.getItemName(777777), stk.getPrice(777777), qty, i);
+                subTotal += stk.getPrice(777777) * qty;
+                i++;
+                break;
+            }
+            case 8: {
+                cout << " How many would you like to buy? " << endl;
+                cin >> qty;
+                goods.insert(stk.getSerial(888888), stk.getItemName(888888), stk.getPrice(888888), qty, i);
+                subTotal += stk.getPrice(888888) * qty;
+                i++;
+                break;
+            }
+            case 9: {
                 string itemModifiedName;
                 int modQty;
                 goods.display(cout);
@@ -112,11 +119,11 @@ int main() {
                 goods.display(cout);
                 break;
             }
-            case 8: {
+            case 10: {
                 cout << stk;
                 break;
             }
-            case 9: {
+            case 11: {
                 cout << "Welcome to SJSU Shopping Center" << endl;
                 cout << "-------------------------------" << endl;
                 cout << "Name: " << name << endl;
