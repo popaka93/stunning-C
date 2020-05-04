@@ -1,16 +1,16 @@
 #include "Cart.h"
-
 using namespace std;
 
 Cart::Cart() {
     has_a = nullptr;
     mySize = 0;
 }
+
 void Cart::display(ostream &os) const {
     nodePtr current = has_a;
-    cout << "Serial Number \t\t Item Name \t\t Price \t\t Quantity \t\t Total" << endl;
+    cout << "Serial Number \t\t Item Name \t\t Price \t\t Quantity" << endl;
     while (current != nullptr) {
-        os << current->serialNum << "\t\t\t " << current->itemName << "\t\t\t " << current->price << "\t\t\t"
+        os << current->serialNum << "\t\t\t\t " << current->itemName << "\t\t\t " << current->price << "\t\t\t"
            << current->quantity << endl;
         current = current->next;
     }
