@@ -1,5 +1,4 @@
 #include "StockNode.h"
-#include "StockDb.h"
 #include "Cart.h"
 
 StockNode::StockNode() {
@@ -10,12 +9,7 @@ StockNode::StockNode() {
     tail = nullptr;
     length =0;
 }
-StockNode::StockNode(StockNode* node)
-{
-    stk=node->getStock();
-    next=node->getNext();
-    prev=node->getPrev();
-}
+
 StockDb StockNode::getStock()
 {
     return stk;
@@ -24,14 +18,7 @@ StockNode* StockNode::getNext()
 {
     return next;
 }
-StockNode* StockNode::getHead()
-{
-    return head;
-}
-StockNode* StockNode::getTail()
-{
-    return tail;
-}
+
 void StockNode::setNext(StockNode* n)
 {
     next=n;
@@ -44,10 +31,7 @@ void StockNode::setPrev(StockNode* p)
 {
     prev=p;
 }
-void StockNode::setStock(StockDb s)
-{
-    stk=s;
-}
+
 
 void StockNode::load(string file){
     ifstream inFile;
@@ -88,21 +72,7 @@ void StockNode::insert_back(StockNode *p)
     tail=p;
     length++;
 }
-void StockNode::getNth(int index){
-    StockDb tmp;
-    Cart goods;
-    StockNode *current=head;
-    int count =0;
-    int i =0;
-    while(current!=nullptr){
-        if (count ==index){
-            goods.insert(tmp.getSerial(),tmp.getItemName(),tmp.getPrice(),tmp.getQty(),i);
-            i++;
-        }
-        count++;
-        current=current->next;
-    }
-}
+
 
 istream& operator>>(istream& in, StockNode& s){
     StockDb tmp;
@@ -114,6 +84,40 @@ istream& operator>>(istream& in, StockNode& s){
     tmp.setSerial(sym); tmp.setItemName(name); tmp.setPrice(price); tmp.setQty(qty);
     s.stk=tmp;
     return in;
+}
+
+int StockNode::getSerial(int index){
+    Cart goods;
+    StockNode *current=head;
+    StockDb tmp = current->getStock();
+    while(current!=nullptr){
+        if (current->getStock().getSerial() ==index){
+            return current->getStock().getSerial();
+        }
+        current=current->next;
+    }
+}
+string StockNode::getItemName(int index){
+    Cart goods;
+    StockNode *current=head;
+    StockDb tmp = current->getStock();
+    while(current!=nullptr){
+        if (current->getStock().getSerial() ==index){
+            return current->getStock().getItemName();
+        }
+        current=current->next;
+    }
+}
+double StockNode::getPrice(int index){
+    Cart goods;
+    StockNode *current=head;
+    StockDb tmp = current->getStock();
+    while(current!=nullptr){
+        if (current->getStock().getSerial() ==index){
+            return current->getStock().getPrice();
+        }
+        current=current->next;
+    }
 }
 
 ostream &operator << (ostream& os,StockNode& s){
