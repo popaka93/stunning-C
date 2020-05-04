@@ -23,6 +23,7 @@ public:
     void insert(int serial, string name, double pr, int qty, int index);
     void modify(string itemModName, int qty);
     void display(ostream &os) const;
+
 private:
     nodePtr has_a;
     int mySize;
