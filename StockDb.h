@@ -6,11 +6,9 @@ using namespace std;
 class StockDb {
 public:
     StockDb();
-    StockDb(int serial,string itName,double pr, int qty);
     void operator =(const StockDb & s);
     friend bool operator <(const StockDb& s1, const StockDb &s2);
     friend ostream &operator<<(ostream& os,StockDb& s);
-
     int getSerial();
     string getItemName();
     double getPrice();
