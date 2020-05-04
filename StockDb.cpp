@@ -1,6 +1,5 @@
 #include "StockDb.h"
 #include <iostream>
-#include <fstream>
 using namespace std;
 
 StockDb::StockDb() {
@@ -9,12 +8,7 @@ StockDb::StockDb() {
     itemPrice =0;
     quantity =0;
 }
-StockDb::StockDb(int serial,string name,double price,int qty){
-    serialNumber = serial;
-    itemName = name;
-    itemPrice = price;
-    quantity = qty;
-}
+
 
 int StockDb::getSerial() {return serialNumber;}
 string StockDb::getItemName() {return itemName;}
